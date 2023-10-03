@@ -1,0 +1,477 @@
+/*Definicion Variables*/
+:root {
+  --color-primary: #ffffff;
+  --color-secondary: #04b4e0;
+
+  --color-background: #f2f7f9;
+  --color-transparent: transparent;
+
+  --color-icon: #b5b6b7;
+  --color-subtitle: #888;
+  --color-title: #222222;
+  --color-text: #555;
+
+  --color-border-reviews: #E5E6E7;
+  --color-company: #A5A6A7;
+}
+
+/*Estilos Generales*/
+
+html {
+  font-size: 10px;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-title);
+}
+
+/* Imagen de Fondo*/
+body {
+  background-image: url("../img/fondo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: -20px -120px;
+}
+
+/*Estructura Principal*/
+.layout {
+  position: relative;
+  min-width: 1290px;
+  width: 75%;
+  height: 80vh;
+  min-height: 80vh;
+  margin: 10vh auto;
+
+  display: grid;
+  grid-template-areas: "aside content";
+  grid-template-columns: 30% 70%;
+
+  /*Sombra detras*/
+  border-radius: 4rem;
+  box-shadow: 0 0 100px -5px rgba(0, 0, 0, 0.25);
+}
+
+/*Barra lateral azul*/
+.layout__aside {
+  grid-area: aside;
+  border-radius: 4rem 0 0 4rem;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.aside__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  min-height: 100%;
+  min-width: 30rem;
+
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.user-info__container-image {
+  position: relative;
+  display: inline-block;
+  width: 18rem;
+  margin-top: 7rem;
+  z-index: 1;
+}
+
+.user-info__image {
+  width: 100%;
+  max-height: 18rem;
+  background-color: var(--color-primary);
+  border: 3px solid var(--color-primary);
+  border-radius: 20rem;
+}
+
+.user-info__container-image::after {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 9%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 30rem;
+  background-image: -webkit-repeating-radial-gradient(
+    center center,
+    #fff,
+    #fff 1px,
+    transparent 0px,
+    transparent 100%
+  );
+  background-size: 0.6rem 0.6rem;
+  opacity: 0.4;
+}
+
+.user-info__name {
+  color: var(--color-primary);
+  font-size: 3.2rem;
+  font-weight: normal;
+  margin-top: 2.6rem;
+}
+
+.user-info__job {
+  font-size: 1.7rem;
+  font-weight: 200;
+  color: var(--color-primary);
+}
+
+.user-info__links {
+  margin-bottom: 3.6rem;
+}
+
+.links__social {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.social__option {
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.8rem;
+  line-height: 3.1rem;
+  opacity: 0.9;
+  border-radius: 3rem;
+  transition: all 300ms linear;
+}
+
+.social__option:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-info__buttons {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.user-info__btn {
+  border: 0.2rem solid var(--color-primary);
+  padding: 3rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
+  border-radius: 3.2rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.22);
+  transition: all 300ms ease-in-out;
+}
+
+.user-info__btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.user-info__footer {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+/*Contenedor Principal*/
+
+.layout__content {
+  grid-area: content;
+  height: 100%;
+  min-height: 100%;
+  background-color: var(--color-secondary);
+  border-radius: 0 10rem 10rem 0;
+}
+
+.content__page {
+  min-height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page__name {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.page__job {
+  font-size: 2.1rem;
+  font-weight: lighter;
+  color: var(--color-subtitle);
+}
+
+/*Menu Navegacion Lateral*/
+
+.layout__menu {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -105px;
+  min-width: 11rem;
+  background-color: transparent;
+}
+
+.menu__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  min-height: 32rem;
+  margin-left: 2.5rem;
+  padding: 3rem 0;
+  position: relative;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 3rem -0.5rem rgba(0, 0, 0, 0.15);
+  border-radius: 6rem;
+}
+
+.menu__option {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.menu__option:hover .menu__icon {
+  color: var(--color-secondary);
+}
+
+.menu__icon {
+  color: var(--color-icon);
+  font-size: 2.8rem;
+  transition: all 300ms ease-in-out;
+}
+.menu__overlay {
+  position: absolute;
+  right: 0;
+  margin-top: -3rem;
+  color: var(--color-primary);
+  opacity: 0;
+  padding: 0.5rem 1rem;
+  display: block;
+  background-color: var(--color-secondary);
+  white-space: nowrap;
+  transition: all 200ms ease-in-out;
+}
+
+.menu__option:hover .menu__overlay {
+  opacity: 1;
+  right: 100%;
+}
+
+/* Sobre Mi*/
+
+.content__about {
+  overflow: auto;
+  height: calc(100% - 12rem);
+  min-height: calc(100% - 12rem);
+  padding-right: 3rem;
+  display: block;
+  padding: 6rem;
+}
+
+.about__header{
+  display: inline-block;
+  margin-bottom: 4.5rem;
+}
+
+.about__title{
+  font-size: 3.2rem;
+  position: relative;
+}
+
+.about__title::after{
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: -25px;
+  width: 50px;
+  height: 30px;
+  background-size: 6px 6px;
+  background-image: -webkit-radial-gradient(center center, var(--color-secondary), var(--color-secondary) 1px, transparent 0px, transparent 100%);
+  opacity: 0.5;
+}
+
+.title__color{
+  color: var(--color-secondary);
+}
+
+/*Info personal*/
+.about__personal-info{
+  width: 100%;
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.personal-info__bio{
+  flex-basis: 57%;
+}
+
+.personal-info__data{
+  flex-basis: 43%;
+  padding: 0 1.5rem;
+}
+
+.personal-info__desc{
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+
+.personal-info__option{
+  margin-bottom: 1rem;
+}
+
+.personal-info__title{
+  margin-right: 0.5rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+/*Servicios*/
+.about__services,
+.about_reviews{
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+
+.services__header,
+.reviews__header{
+  display: inline-block;
+  padding-right: 1.2rem;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.services__title,
+.reviews__title{
+  font-size: 2.1rem;
+}
+
+.services__title::after,
+.reviews__title::after{
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  width: 30px;
+  height: 20px;
+  background-size: 6px 6px;
+  background-image: -webkit-radial-gradient(center center, var(--color-secondary), var(--color-secondary) 1px, transparent 0px, transparent 100%);
+  opacity: 0.5;
+}
+
+.services__container{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.services__service{
+  flex-basis: calc(50% - 3rem);
+  margin-right: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.service__real-icon{
+  color: var(--color-secondary);
+  font-size: 3.8rem;
+}
+
+.service__title{
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+}
+
+.service__desc{
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+/*Reseñas*/
+
+.reviews__container{
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reviews__review{
+  flex-basis: calc(50% - 7.9rem);
+  border: 2px solid var(--color-border-reviews);
+  border-radius: 2rem;
+  padding-top: 0;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+  padding-bottom: 1.5rem;
+  margin-right: 2.5rem;
+  margin-top: 4.5rem;
+  margin-bottom: 1rem;
+}
+
+.review__image-container{
+  width: 100%;
+}
+
+.review__image{
+  max-width: 9rem;
+  max-height: 9rem;
+  border-radius: 9rem;
+  margin: 0 auto;
+  margin-top: -5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.22);
+}
+
+.review__desc{
+  margin-bottom: 1rem;
+}
+
+.review__text{
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+}
+
+.review__author{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review__name{
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.review__company{
+  color: var(--color-company);
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+.review__icon{
+  font-size: 4rem;
+  opacity: 0.55;
+  color: var(--color-secondary);
+}
